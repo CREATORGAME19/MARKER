@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <style>#header /*Styles for Header*/
+	{
+		padding: 15px;
+		color: #ffffff;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+      		font-size: 24px;
+		background-color: #00ddff;
+	}
+	#main {
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+	}
+	#main1 {
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 20px;
+	}
+	#button {
+  		background-color: white;
+  		color: black;
+  		border: 2px #e7e7e7;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 20px;
+		border-radius: 5px;
+	}
+	#button:hover {
+		background-color: #e7e7e7; 
+		color: black;
+		
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 20px;
+	}
+
+	</style>
+	<title>MARKER</title>
+    </head>
+    <body>
+        <div>
+            <center><h1 id="header">MARKER</h1></center>
+        </div>
+	<div id="main">
+	<center id= "main">
+	
+	
+
+	{% block content %}
+	{% if user.is_authenticated %}
+  		<p id="main1">Hi {{ user.username }}!</p>
+		<a id="button" href="{% url 'logout' %}">logout</a>
+		<h2>Here are your tasks:</h2>
+		{% for i in tasks.all %}
+			<div>
+					<a id="button" href="{% url 'task' i.id %}">{{i.title}}</button>
+        		</div>
+
+
+    	{% endfor %}
+	{% else %}
+  		<p id="main1">You are not logged in</p>
+  		<a href="{% url 'login' %}">login</a>
+	{% endif %}
+	{% endblock %}
+
+	</center>
+	</div>
+	</body>
+</html>

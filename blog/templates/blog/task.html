@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>#header /*Styles for Header*/
+	{
+		padding: 15px;
+		color: #ffffff;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+      		font-size: 24px;
+		background-color: #00ddff;
+	}
+	#main {
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 18px;
+	}
+	#button {
+  		background-color: white;
+  		color: black;
+  		border: 2px #e7e7e7;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 20px;
+		border-radius: 5px;
+	}
+	#button:hover {
+		background-color: #e7e7e7; 
+		color: black;
+		
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 20px;
+	}
+	#title {
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 24px;
+	}
+	</style>
+	<title>MARKER</title>
+    </head>
+    <body>
+        <div>
+            <center><a href="/"><h1 id="header">MARKER</h1></a></center>
+        </div>
+	<div id="main">
+	<center id= "main">
+	<h3 id="title">Your task is:</h3>
+	{% for i in tasks.all %}
+		<div id="main">
+			<p id="main">{{i.text}}</p>
+			<a id="button" href="{% url 'task_submit' i.id %}">I am ready to submit my work!</a>
+		</div>
+	{% endfor %}
+	
+	</form>
+	</center>
+	</div>
+	</body>
+</html>
